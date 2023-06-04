@@ -1,22 +1,27 @@
 import java.io.*;
 import java.util.*;
+
 public class Main {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        st = new StringTokenizer(br.readLine());
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] input = br.readLine().split(" ");
+        int N = Integer.parseInt(input[0]);
+        int M = Integer.parseInt(input[1]);
+        String[] numbers = br.readLine().split(" ");
         int[] sum = new int[N+1];
-        for (int i = 1; i < N+1; i++) {
-            sum[i] = sum[i-1] + Integer.parseInt(st.nextToken());
+        for (int i = 1; i <= N; i++) {
+            sum[i] = sum[i-1] + Integer.parseInt(numbers[i-1]);
         }
 
         for (int i = 0; i < M; i++) {
-            st = new StringTokenizer(br.readLine());
-            int start = Integer.parseInt(st.nextToken());
-            int end = Integer.parseInt(st.nextToken());
-            System.out.println(sum[end] - sum[start-1]);
+            input = br.readLine().split(" ");
+            int start = Integer.parseInt(input[0]);
+            int end = Integer.parseInt(input[1]);
+            bw.write(Integer.toString(sum[end] - sum[start-1]));
+            bw.newLine();
         }
+        bw.flush();
+        bw.close();
     }
 }
