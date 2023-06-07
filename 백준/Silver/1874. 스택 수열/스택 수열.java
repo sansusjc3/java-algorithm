@@ -10,7 +10,7 @@ public class Main {
             A[i] = sc.nextInt();
         }
         Stack<Integer> stack = new Stack<>();
-        StringBuffer bf = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         int num = 1;
         boolean result = true;
         for (int i=0; i < A.length; i++) {
@@ -18,10 +18,10 @@ public class Main {
             if(su >= num) {
                 while (su >= num) {
                     stack.push(num++);
-                    bf.append("+\n");
+                    sb.append("+\n");
                 }
                 stack.pop();
-                bf.append("-\n");
+                sb.append("-\n");
             } else {
                 int n = stack.pop();
                 if (n > su) {
@@ -29,10 +29,10 @@ public class Main {
                     result = false;
                     break;
                 } else {
-                    bf.append("-\n");
+                    sb.append("-\n");
                 }
             }
         }
-        if (result) System.out.println(bf.toString());
+        if (result) System.out.println(sb);
     }
 }
